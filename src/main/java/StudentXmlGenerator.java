@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,6 +19,7 @@ public class StudentXmlGenerator {
     Document doc;
 
     public void generateXml() {
+
         try {
 
             // initialize document builder
@@ -40,9 +42,6 @@ public class StudentXmlGenerator {
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("src/main/resources/users.xml"));
 
-            // Output to console for testing
-            // StreamResult result = new StreamResult(System.out);
-
             transformer.transform(source, result);
 
             System.out.println("File saved!");
@@ -55,15 +54,25 @@ public class StudentXmlGenerator {
     }
 
     private Element generateUserElement() {
+        Scanner scanner = new Scanner(System.in);
+
         // define user element
         Element user = doc.createElement("User");
 
         // define role element
         Element role = doc.createElement("Role");
-        role.setAttribute("Id", "_1");
-        role.setAttribute("Type", "Global");
-        role.setAttribute("Action", "Assign");
-        role.appendChild(doc.createCDATASection("Nutzer"));
+        System.out.println("Role Id");
+        String roleId = scanner.next();
+        role.setAttribute("Id", roleId);
+        System.out.println("Role Type");
+        String roleType = scanner.next();
+        role.setAttribute("Type", roleType);
+        System.out.println("Role Action");
+        String roleAction = scanner.next();
+        role.setAttribute("Action", roleAction);
+        System.out.println("Role text content");
+        String roleTextContent = scanner.next();
+        role.appendChild(doc.createCDATASection(roleTextContent));
         user.appendChild(role);
 
         // define login element
