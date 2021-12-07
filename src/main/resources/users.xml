@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Users>
+    <User>
+        <Role Action="Assign" Id="_1" Type="Global"><![CDATA[Nutzer]]></Role>
+        <Login><![CDATA[andre.schweigert]]></Login>
+        <Firstname><![CDATA[Andre]]></Firstname>
+        <Lastname><![CDATA[Andre]]></Lastname>
+        <Matriculation><![CDATA[data5]]></Matriculation>
+        <TimeLimitUntil><![CDATA[probalblysometime]]></TimeLimitUntil>
+        <TimeLimitUnlimited><![CDATA[1]]></TimeLimitUnlimited>
+        <TimeLimitFrom><![CDATA[07.12.2021 00:00:00]]></TimeLimitFrom>
+    </User>
+</Users>
