@@ -17,6 +17,7 @@ import org.w3c.dom.Element;
 public class StudentXmlGenerator {
 
     Document doc;
+    Scanner scanner = new Scanner(System.in);
 
     public void generateXml() {
 
@@ -33,6 +34,14 @@ public class StudentXmlGenerator {
 
             // add user to root element
             rootElement.appendChild(generateUserElement());
+
+            System.out.println("Would you like to add another user? y/n");
+            String addUser = scanner.next();
+            while (addUser.equals("y")) {
+                rootElement.appendChild(generateUserElement());
+                System.out.println("Would you like to add another user? y/n");
+                addUser = scanner.next();
+            }
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -54,7 +63,7 @@ public class StudentXmlGenerator {
     }
 
     private Element generateUserElement() {
-        Scanner scanner = new Scanner(System.in);
+
 
         // define user element
         Element user = doc.createElement("User");
@@ -77,37 +86,51 @@ public class StudentXmlGenerator {
 
         // define login element
         Element login = doc.createElement("Login");
-        login.appendChild(doc.createCDATASection("andre.schweigert"));
+        System.out.println("Login");
+        String loginTextContent = scanner.next();
+        login.appendChild(doc.createCDATASection(loginTextContent));
         user.appendChild(login);
 
         // define first name element
         Element firstName = doc.createElement("Firstname");
-        firstName.appendChild(doc.createCDATASection("Andre"));
+        System.out.println("Firstname");
+        String firstNameTextContent = scanner.next();
+        firstName.appendChild(doc.createCDATASection(firstNameTextContent));
         user.appendChild(firstName);
 
         // define last name element
         Element lastName = doc.createElement("Lastname");
-        lastName.appendChild(doc.createCDATASection("Andre"));
+        System.out.println("Lastname");
+        String lastNameTextName = scanner.next();
+        lastName.appendChild(doc.createCDATASection(lastNameTextName));
         user.appendChild(lastName);
 
         // define last name element
         Element matriculation = doc.createElement("Matriculation");
-        matriculation.appendChild(doc.createCDATASection("data5"));
+        System.out.println("Matriculation");
+        String matriculationTextContent = scanner.next();
+        matriculation.appendChild(doc.createCDATASection(matriculationTextContent));
         user.appendChild(matriculation);
 
         // define time limit until element
         Element timeLimitUntil = doc.createElement("TimeLimitUntil");
-        timeLimitUntil.appendChild(doc.createCDATASection("probalblysometime"));
+        System.out.println("Time limit until");
+        String timeLimitUntilTextContent = scanner.next();
+        timeLimitUntil.appendChild(doc.createCDATASection(timeLimitUntilTextContent));
         user.appendChild(timeLimitUntil);
 
         // define time limit unlimited element
         Element timeLimitUnlimited = doc.createElement("TimeLimitUnlimited");
-        timeLimitUnlimited.appendChild(doc.createCDATASection("1"));
+        System.out.println("Time limit unlimited");
+        String timeLimitUnlimitedTextContent = scanner.next();
+        timeLimitUnlimited.appendChild(doc.createCDATASection(timeLimitUnlimitedTextContent));
         user.appendChild(timeLimitUnlimited);
 
         // define time limit from element
         Element timeLimitFrom = doc.createElement("TimeLimitFrom");
-        timeLimitFrom.appendChild(doc.createCDATASection("07.12.2021 00:00:00"));
+        System.out.println("Time limit from");
+        String timeLimitFromTextContent = scanner.next();
+        timeLimitFrom.appendChild(doc.createCDATASection(timeLimitFromTextContent));
         user.appendChild(timeLimitFrom);
 
         return user;
