@@ -96,11 +96,13 @@ public class StudentXmlGenerator {
         // abfrage ob Nutzer oder Gastzugang
         System.out.println("[1]Nutzerzugang oder [2]Gastzugang");
         boolean gastzugang = false;
+        boolean nutzerzugang = true;
         int roleassigment = scanner.nextInt();
         String roleTextContent = "";
         switch (roleassigment){
             case 1:
                 roleTextContent = "Nutzer";
+                nutzerzugang = true;
                 break;
             case 2:
                 roleTextContent = "Gast";
@@ -120,22 +122,33 @@ public class StudentXmlGenerator {
         String roleTextContent = scanner.next();
 
         */
-
-        //Wenn -> Abfrage auf Nutzer -> Fragen ob NUR Testzugänge erstellt werden sollen ;
-        //                           -> Fragen ob ALLE Zugänge erstellt werden sollen
-        //                                  -> Bei Testzugänge Login +".test" & Vorname Testuser[n]
-
-        /*
-                ID
-                0   root
-                1   Nutzer
-                2   Testzugang
-                3   Gastzugang
-
+        String gastzugangkennung = "";
+        if(gastzugang=true){
+            System.out.printf("Welcher Gastzugang soll erstellt werden ?\n");
+            System.out.printf("[1] Lehrbeauftragte/Gastdozenten\n");
+            System.out.printf("[2] Zugänge für Akademie der Gesundheits- & Pflegeberufe   [INFO FOLGT]\n");
+            System.out.printf("[3] Zugänge für Akademie Für Ganztagspädagogik     [INFO FOLGT]\n");
+            System.out.printf("                                             \n");
+            System.out.printf(" ***************************************\n");
+            System.out.printf("                                             \n");
+            int gastzugangeingabe;
 
 
+            gastzugangeingabe = scanner.nextInt();
 
-         */
+            switch (gastzugangeingabe){
+                case 1:
+                    gastzugangkennung = gastzugangkennung + "gu";
+                    break;
+                case 2:
+                case 3:
+                    gastzugangkennung = gastzugangkennung + "ga";
+                    break;
+            }
+        }
+
+        System.out.println(gastzugang);
+
         int usercreateID;
 
         System.out.println("Sollen NUR Testzugänge erstellt werden, oder ALLE Zugänge?");
@@ -156,37 +169,15 @@ public class StudentXmlGenerator {
                 break;
         }
 
-        if(gastzugang=true){
-            System.out.printf("Welcher Gastzugang soll erstellt werden ?\n");
-            System.out.printf("[1] Lehrbeauftragte/Gastdozenten\n  ");
-            System.out.printf("[2] Zugänge für Akademie der Gesundheits- & Pflegeberufe   [INFO FOLGT]\n");
-            System.out.printf("[3] Zugänge für Akademie Für Ganztagspädagogik     [INFO FOLGT]\n");
-            System.out.printf("                                             \n");
-            System.out.printf(" ***************************************\n");
-            System.out.printf("                                             \n");
-
-        }
-
-        /*if (usercreateID == 1){
-            testzugang = true;
-        } else {
-            testzugang = false;
-        }*/
-
-        // define login element
-            //implement Gast
-
-
-        Element login = doc.createElement("Login");
-        System.out.println("Login");
-        String loginTextContent = scanner.next();
-        login.appendChild(doc.createCDATASection(loginTextContent));
-        user.appendChild(login);
-
-        // define first name element
         Element firstName = doc.createElement("Firstname");
         System.out.println("Firstname");
         String firstNameTextContent = scanner.next();
+        if(gastzugang==true){
+            String cuttedfNTC = firstNameTextContent;
+            cuttedfNTC = cuttedfNTC.substring(0,2);
+            gastzugangkennung = gastzugangkennung+cuttedfNTC;
+
+        }
         firstName.appendChild(doc.createCDATASection(firstNameTextContent));
         user.appendChild(firstName);
 
@@ -194,8 +185,46 @@ public class StudentXmlGenerator {
         Element lastName = doc.createElement("Lastname");
         System.out.println("Lastname");
         String lastNameTextName = scanner.next();
+
+        if(gastzugang==true){
+            String cuttedlNTC = lastNameTextName;
+            cuttedlNTC = cuttedlNTC.substring(0,4);
+            gastzugangkennung = gastzugangkennung+cuttedlNTC;
+
+        }
         lastName.appendChild(doc.createCDATASection(lastNameTextName));
         user.appendChild(lastName);
+        System.out.println(gastzugangkennung);
+        /*if (usercreateID == 1){
+            testzugang = true;
+        } else {
+            testzugang = false;
+        }*/
+
+        // define login element
+        if(gastzugang == true){
+            Element login = doc.createElement("Login");
+            System.out.println("Login = "+gastzugangkennung);
+            login.appendChild(doc.createCDATASection(gastzugangkennung));
+            user.appendChild(login);
+
+
+
+
+
+        } else {
+            Element login = doc.createElement("Login");
+            System.out.println("Login");
+            String loginTextContent = scanner.next();
+            login.appendChild(doc.createCDATASection(loginTextContent));
+            user.appendChild(login);
+        }
+        //implement Gast
+
+
+
+        // define first name element
+
 
         // define last name element
         Element matriculation = doc.createElement("Matriculation");
