@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Users>
-    <User>
-        <Role Action="1" Id="1" Type="1"><![CDATA[1]]></Role>
-        <Login><![CDATA[1]]></Login>
-        <Firstname><![CDATA[1]]></Firstname>
-        <Lastname><![CDATA[1]]></Lastname>
-        <Matriculation><![CDATA[1]]></Matriculation>
-        <TimeLimitUntil><![CDATA[1]]></TimeLimitUntil>
-        <TimeLimitUnlimited><![CDATA[1]]></TimeLimitUnlimited>
-        <TimeLimitFrom><![CDATA[1]]></TimeLimitFrom>
-    </User>
-    <User>
-        <Role Action="1" Id="1" Type="1"><![CDATA[1]]></Role>
-        <Login><![CDATA[1]]></Login>
-        <Firstname><![CDATA[1]]></Firstname>
-        <Lastname><![CDATA[1]]></Lastname>
-        <Matriculation><![CDATA[1]]></Matriculation>
-        <TimeLimitUntil><![CDATA[1]]></TimeLimitUntil>
-        <TimeLimitUnlimited><![CDATA[1]]></TimeLimitUnlimited>
-        <TimeLimitFrom><![CDATA[1]]></TimeLimitFrom>
+    <User Action="insert" Language="de">
+        <Role Action="action" Id="1" Type="tyoe"><![CDATA[Txt]]></Role>
+        <Login><![CDATA[Login]]></Login>
+        <Firstname><![CDATA[firstname]]></Firstname>
+        <Lastname><![CDATA[lastname]]></Lastname>
+        <Matriculation><![CDATA[mat]]></Matriculation>
+        <TimeLimitUntil><![CDATA[tu]]></TimeLimitUntil>
+        <TimeLimitUnlimited><![CDATA[tli]]></TimeLimitUnlimited>
+        <TimeLimitFrom><![CDATA[tlf]]></TimeLimitFrom>
     </User>
 </Users>

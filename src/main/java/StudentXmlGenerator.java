@@ -67,6 +67,12 @@ public class StudentXmlGenerator {
 
         // define user element
         Element user = doc.createElement("User");
+        System.out.println("Language");
+        String language = scanner.next();
+        user.setAttribute("Language", language);
+        System.out.println("Action");
+        String action = scanner.next();
+        user.setAttribute("Action", action);
 
         // define role element
         Element role = doc.createElement("Role");
