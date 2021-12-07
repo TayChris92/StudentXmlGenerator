@@ -36,12 +36,22 @@ public class StudentXmlGenerator {
             rootElement.appendChild(generateUserElement());
 
             System.out.println("Would you like to add another user? y/n");
-            String addUser = scanner.next();
-            while (addUser.equals("y")) {
-                rootElement.appendChild(generateUserElement());
-                System.out.println("Would you like to add another user? y/n");
-                addUser = scanner.next();
+            boolean shouldPrompt = true;
+            while (shouldPrompt) {
+                String answer = scanner.next();
+                if (answer.equalsIgnoreCase("y")) {
+                    rootElement.appendChild(generateUserElement());
+                    shouldPrompt = true;
+                }
+                else if (answer.equalsIgnoreCase("n")) {
+                    shouldPrompt = false;
+                }
+                else if (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+                    System.out.println("y or n!");
+                    shouldPrompt = true;
+                }
             }
+
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();

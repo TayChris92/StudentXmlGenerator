@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Users>
-    <User Action="insert" Language="de">
-        <Role Action="action" Id="1" Type="tyoe"><![CDATA[Txt]]></Role>
-        <Login><![CDATA[Login]]></Login>
-        <Firstname><![CDATA[firstname]]></Firstname>
-        <Lastname><![CDATA[lastname]]></Lastname>
-        <Matriculation><![CDATA[mat]]></Matriculation>
-        <TimeLimitUntil><![CDATA[tu]]></TimeLimitUntil>
-        <TimeLimitUnlimited><![CDATA[tli]]></TimeLimitUnlimited>
-        <TimeLimitFrom><![CDATA[tlf]]></TimeLimitFrom>
+    <User Action="d" Language="d">
+        <Role Action="d" Id="d" Type="d"><![CDATA[d]]></Role>
+        <Login><![CDATA[d]]></Login>
+        <Firstname><![CDATA[d]]></Firstname>
+        <Lastname><![CDATA[d]]></Lastname>
+        <Matriculation><![CDATA[d]]></Matriculation>
+        <TimeLimitUntil><![CDATA[d]]></TimeLimitUntil>
+        <TimeLimitUnlimited><![CDATA[d]]></TimeLimitUnlimited>
+        <TimeLimitFrom><![CDATA[d]]></TimeLimitFrom>
     </User>
 </Users>
