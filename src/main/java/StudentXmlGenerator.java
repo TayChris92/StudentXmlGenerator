@@ -79,6 +79,7 @@ public class StudentXmlGenerator {
 
         // abfrage ob Nutzer oder Gastzugang
         System.out.println("[1]Nutzerzugang oder [2]Gastzugang");
+        boolean gastzugang = false;
         int roleassigment = scanner.nextInt();
         String roleTextContent = "";
         switch (roleassigment){
@@ -87,6 +88,7 @@ public class StudentXmlGenerator {
                 break;
             case 2:
                 roleTextContent = "Gast";
+                gastzugang = true;
                 break;
             default:
                 System.out.printf("Falsche Eingabe!");
@@ -123,18 +125,42 @@ public class StudentXmlGenerator {
         System.out.println("Sollen NUR Testzugänge erstellt werden, oder ALLE Zugänge?");
         System.out.printf("NUR[1]      oder      ALLE[2]");
         usercreateID = scanner.nextInt();
+        boolean testzugang = false;
+
         switch (usercreateID){
             case 1:
-                System.out.printf("Es werden im Verlauf zwei Testzugänge erstellt.");
-        }
-        boolean testzugang;
-        if (usercreateID == 1){
-            testzugang= true;
-        } else {
-            testzugang= false;
+                //System.out.printf("Es werden im Verlauf zwei Testzugänge erstellt.");
+                System.out.println("Es wird ein Testzugang erstellt!");
+                testzugang = true;
+                break;
+
+            case 2:
+                System.out.printf("Es wird ein Gastzugang erstellt!");
+                gastzugang = true;
+                break;
         }
 
+        if(gastzugang=true){
+            System.out.printf("Welcher Gastzugang soll erstellt werden ?\n");
+            System.out.printf("[1] Lehrbeauftragte/Gastdozenten\n  ");
+            System.out.printf("[2] Zugänge für Akademie der Gesundheits- & Pflegeberufe   [INFO FOLGT]\n");
+            System.out.printf("[3] Zugänge für Akademie Für Ganztagspädagogik     [INFO FOLGT]\n");
+            System.out.printf("                                             \n");
+            System.out.printf(" ***************************************\n");
+            System.out.printf("                                             \n");
+
+        }
+
+        /*if (usercreateID == 1){
+            testzugang = true;
+        } else {
+            testzugang = false;
+        }*/
+
         // define login element
+            //implement Gast
+
+
         Element login = doc.createElement("Login");
         System.out.println("Login");
         String loginTextContent = scanner.next();
