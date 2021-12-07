@@ -70,19 +70,69 @@ public class StudentXmlGenerator {
 
         // define role element
         Element role = doc.createElement("Role");
-        System.out.println("Role Id");
-        String roleId = scanner.next();
+        String roleId = "_1";
         role.setAttribute("Id", roleId);
-        System.out.println("Role Type");
-        String roleType = scanner.next();
+        String roleType = "Global";
         role.setAttribute("Type", roleType);
-        System.out.println("Role Action");
-        String roleAction = scanner.next();
+        String roleAction = "Assign";
         role.setAttribute("Action", roleAction);
-        System.out.println("Role text content");
-        String roleTextContent = scanner.next();
+
+        // abfrage ob Nutzer oder Gastzugang
+        System.out.println("[1]Nutzerzugang oder [2]Gastzugang");
+        int roleassigment = scanner.nextInt();
+        String roleTextContent = "";
+        switch (roleassigment){
+            case 1:
+                roleTextContent = "Nutzer";
+                break;
+            case 2:
+                roleTextContent = "Gast";
+                break;
+            default:
+                System.out.printf("Falsche Eingabe!");
+                break;// To-Do loop;
+
+        }
         role.appendChild(doc.createCDATASection(roleTextContent));
         user.appendChild(role);
+
+
+        /*   old
+        System.out.println("Role text content"); // Nutzer oder Gast
+        String roleTextContent = scanner.next();
+
+        */
+
+        //Wenn -> Abfrage auf Nutzer -> Fragen ob NUR Testzugänge erstellt werden sollen ;
+        //                           -> Fragen ob ALLE Zugänge erstellt werden sollen
+        //                                  -> Bei Testzugänge Login +".test" & Vorname Testuser[n]
+
+        /*
+                ID
+                0   root
+                1   Nutzer
+                2   Testzugang
+                3   Gastzugang
+
+
+
+
+         */
+        int usercreateID;
+
+        System.out.println("Sollen NUR Testzugänge erstellt werden, oder ALLE Zugänge?");
+        System.out.printf("NUR[1]      oder      ALLE[2]");
+        usercreateID = scanner.nextInt();
+        switch (usercreateID){
+            case 1:
+                System.out.printf("Es werden im Verlauf zwei Testzugänge erstellt.");
+        }
+        boolean testzugang;
+        if (usercreateID == 1){
+            testzugang= true;
+        } else {
+            testzugang= false;
+        }
 
         // define login element
         Element login = doc.createElement("Login");
